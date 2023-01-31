@@ -10,3 +10,6 @@ def andrew(request):
 
 def parvin(request):
     return HttpResponse('Hello, Parvin!')
+
+def greet(request, name):
+    return HttpResponse(f'Hello, {name.capitalize()}!')
