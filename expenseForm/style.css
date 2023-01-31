@@ -1,0 +1,25 @@
+#expense, #amount, #recipient, #date, #submitBtn {
+    padding: 10px;
+    margin: 5px;
+    
+}
+
+body {
+    align-items: center;
+}
+
+h3 {
+    text-align: center;
+}
+
+
+#formdiv {
+    background-color: rgb(151, 170, 164);
+    padding: 10px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+button {
+    border-radius: 15px;
+}
