@@ -13,4 +13,9 @@ def parvin(request):
     return HttpResponse('Hello, Parvin!')
 
 def greet(request, name):
-    return HttpResponse(f'Hello, {name.capitalize()}!')
+    # return HttpResponse(f'Hello, {name.capitalize()}!') 
+    # takes an input eg url/hello/andrew and displays Hello Andrew
+
+    return render(request, "hello/greet.html", {
+        'name': name.capitalize(),
+    }),
