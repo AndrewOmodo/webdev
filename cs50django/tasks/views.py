@@ -3,7 +3,6 @@ from django import forms
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-tasks = []
 
 class NewTasKForm(forms.Form):
     task = forms.ChoiceField(label="New task")
@@ -11,8 +10,10 @@ class NewTasKForm(forms.Form):
 
 # Create your views here.
 def index(request):
+    if "tasks" not in request.session:
+        request.session["tasks"] = []
     return render(request, "tasks/index.html", {
-        "tasks" : tasks
+        "tasks" : request.session["tasks"],
     }),
 
 def add(request):
@@ -20,7 +21,7 @@ def add(request):
         form = NewTaskForm(request.POST)
         if form.is_valid():
             task = form.cleaned_data["task"]
-            tasks.append(task)
+            request.session["tasks"] += [task]
             return HttpReponseRedirect(reverse("tasks:index"))
         else: 
             return render(request, "tasks/add.html", {
